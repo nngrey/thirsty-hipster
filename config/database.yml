@@ -1,0 +1,12 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: thirsty_hipster_development
+
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: thirsty_hipster_test
+
