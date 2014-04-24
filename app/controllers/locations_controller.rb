@@ -37,6 +37,7 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
+    flash[:notice] = "Location has been removed."
     redirect_to locations_path
   end
 
