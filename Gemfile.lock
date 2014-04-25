@@ -53,6 +53,7 @@ GEM
     coffee-script-source (1.7.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -197,6 +198,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails
+  database_cleaner
   devise
   dotenv-rails
   factory_girl_rails
