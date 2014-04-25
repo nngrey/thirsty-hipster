@@ -13,6 +13,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'textacular'
 gem 'rest-client'
+gem 'oauth'
 
 group :development do
   gem 'better_errors'
