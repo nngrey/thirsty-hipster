@@ -10,4 +10,11 @@
 
 <hr>
 
-<p>Comments coming soon!</p>
+<p><%= link_to "New Comment", new_comment_path(:loc => @location), id: "new_link", remote: true %></p>
+
+<div id="comments">
+
+</div>
+
+<!-- new_comment_path(location_id: @location.id) -->
+

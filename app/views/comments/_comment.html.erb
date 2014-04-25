@@ -1,0 +1,4 @@
+<%= form_for comment do |f| %>
+  <%= f.label comment.comment %>
+  <%= link_to "update", comment_path(comment), :class => "btn-xs btn-warning", :method => "patch" %>
+<% end %>
