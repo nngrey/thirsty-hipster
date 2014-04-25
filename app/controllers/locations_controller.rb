@@ -19,6 +19,7 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -37,13 +38,14 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
+    flash[:notice] = "Location has been removed."
     redirect_to locations_path
   end
 
 private
 
   def location_params
-    params.require(:location).permit(:name, :address, :city, :state, :start_time, :end_time, :description, :url)
+    params.require(:location).permit(:name, :address, :city, :state,
+                                    :start_time, :end_time, :description, :url)
   end
 end
-
