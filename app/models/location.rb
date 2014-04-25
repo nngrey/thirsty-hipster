@@ -4,11 +4,8 @@ class Location < ActiveRecord::Base
   has_many :comments
   has_many :users, through: :comments
 
-  before_create :make_search
-
-  private
-
-  def make_search
+  def yelp_check
+    name = name.gsub(/\s/, '+')
 
     consumer_key = ENV['CONSUMER_KEY']
     consumer_secret = ENV['CONSUMER_SECRET']
