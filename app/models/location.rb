@@ -19,9 +19,7 @@ class Location < ActiveRecord::Base
     consumer = OAuth::Consumer.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'], {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
-    binding.pry
-
-    path = "/v2/search?category_filter=bars&location=Portland"
+    path = "/v2/search?term=Radio+Room&category_filter=bars&location=Portland&limit=3"
     yelp_data = JSON.parse(access_token.get(path).body)
 
     # ########################
