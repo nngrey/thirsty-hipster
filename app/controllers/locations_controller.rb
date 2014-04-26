@@ -16,6 +16,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
+      flash[:notice]="New location created."
       redirect_to root_path
     else
       render 'new'
@@ -25,6 +26,10 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @comment = Comment.new
+    respond_to do |format|
+      format.html
+      format.js { render 'show.html.erb' }
+    end
   end
 
   def edit
@@ -34,6 +39,7 @@ class LocationsController < ApplicationController
   def update
     @location = Location.find(params[:id])
     if @location.update(location_params)
+      flash[:notice]="Location updated."
       redirect_to location_path(@location)
     else
       render 'edit'
