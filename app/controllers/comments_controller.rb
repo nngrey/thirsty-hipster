@@ -30,16 +30,17 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.update_attributes(comment_params)
     respond_to do |format|
-      format.html { redirect_to location_comments_path }
+      format.html { redirect_to location_path(@location) }
       format.js { redirect_to location_path(@location, :format => :html) }
     end
   end
 
   def destroy
+    @location = Location.find(params[:location_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to location_comments_path }
+      format.html { redirect_to location_path(@location) }
       format.js
     end
   end
