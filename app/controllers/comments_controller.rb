@@ -4,22 +4,34 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    @location = Location.find(params[:location_id])
+    @comment = @location.comments.new
   end
 
   def create
-    @comment = Comment.create(comment_path)
+    @location =Location.find(params[:location_id])
+    @comment = Comment.create!(comment_params)
     respond_to do |format|
-      format.html { redirect_to comments_path }
+      format.html { redirect_to location_path(@location) }
       format.js
     end
   end
 
-  def update
+  def show
     @comment = Comment.find(params[:id])
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @location = Location.find(params[:location_id])
+    @comment = Comment.find(params[:id])
+    @comment.update_attributes(comment_params)
     respond_to do |format|
-      format.html { redirect_to comments_path }
-      format.js
+      format.html { redirect_to location_comments_path }
+      format.js { redirect_to location_path(@location, :format => :html) }
     end
   end
 
@@ -27,13 +39,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_path }
+      format.html { redirect_to location_comments_path }
       format.js
     end
   end
 
   private
-  def comment_path
+  def comment_params
     params.require(:comment).permit(:comment, :user_id, :location_id)
   end
 end

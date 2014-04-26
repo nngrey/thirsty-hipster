@@ -1,0 +1,18 @@
+stuff
+
+<%= form_for [@comment.location, @comment], remote: true, html: {id: 'edit_comment_form'} do |f|%>
+
+  <%= f.label :comment %>
+  <%= f.text_field :comment %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :location_id, :value => @comment.location.id %>
+  <%= f.submit 'Add Comment' %>
+
+<% end %>
+
+$('#new_comment').hide();
+$('#new_link').show();
+$('#review_list').append('<li><%= j render('comment', comment: @comment) %></li>');
+$('#edit_comment_form').bind("ajax:error", function(){
+  alert("Success");
+})

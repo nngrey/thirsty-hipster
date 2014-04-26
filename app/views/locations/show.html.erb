@@ -10,11 +10,13 @@
 
 <hr>
 
-<p><%= link_to "New Comment", new_comment_path(:loc => @location), id: "new_link", remote: true %></p>
+<p><%= link_to "New Comment", new_location_comment_path(@location), id: "new_link", remote: true %></p>
 
 <div id="comments">
-
+  <h3>Comments</h3>
+  <ul class="list-unstyled" id="review_list">
+    <%= render @location.comments %>
+  </ul>
 </div>
 
-<!-- new_comment_path(location_id: @location.id) -->
 

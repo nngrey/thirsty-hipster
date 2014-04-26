@@ -20,6 +20,10 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @comment = Comment.new
+    respond_to do |format|
+      format.html
+      format.js { render 'show.html.erb' }
+    end
   end
 
   def edit
