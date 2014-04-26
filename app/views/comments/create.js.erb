@@ -1,3 +1,4 @@
 $('#new_comment').hide();
 $('#new_link').show();
-$('#comments').append('<%= j render('comment', comment: @comment) %>');
+$('#review_list').append('<li><%= j render('comment', comment: @comment) %></li>');
+

@@ -31,6 +31,7 @@ group :test, :development do
   gem 'poltergeist'
   gem 'letter_opener'
   gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :test do

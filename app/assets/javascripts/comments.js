@@ -1,5 +1,5 @@
 $(function() {
-  $('.btn').click(function() {
+  $('#btn-one').click(function() {
     alert("Button Clicked")
   });
 });

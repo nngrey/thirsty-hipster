@@ -2,6 +2,6 @@
 <%= link_to "Add New Location", new_location_path, class: "btn btn-success" %>
 
 <% @locations.each do |location| %>
-  <h3><%= link_to "#{location.name}", location_path(location.id) %></h3>
+  <h3><%= link_to "#{location.name}", location_path(location) %></h3>
   <p><%=location.city %>, <%=location.state %><p>
 <% end %>
