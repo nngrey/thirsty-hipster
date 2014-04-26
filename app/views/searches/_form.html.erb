@@ -1,0 +1,8 @@
+
+<%= form_tag new_search_path do %>
+  <div class="form_group">
+    <%= label_tag :name, "Location Name" %> <br>
+    <%= text_field_tag :name %>
+  </div>
+  <%= submit_tag("Search") %>
+<% end %>
