@@ -5,6 +5,7 @@ ThirstyHipster::Application.routes.draw do
     resources :comments
   end
   resources :comments
+  resources :searches
 end
 
 
