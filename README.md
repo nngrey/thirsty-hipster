@@ -3,7 +3,7 @@ The Thirsty Hipster App
 
 Summary
 --------
-Thisty Hipster is a location-based service that accesses a proprietary approximation algorithm to determine ideal happy hour locations.
+Thisty Hipster is a location-based service that utilizes a proprietary approximation algorithm to determine ideal happy hour locations.
 
 User Stories
 -----------
