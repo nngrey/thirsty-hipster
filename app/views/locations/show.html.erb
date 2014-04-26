@@ -2,8 +2,7 @@
 <p>Address: <strong><%= @location.address %></strong></p>
 <p>City: <strong><%= @location.city %></strong></p>
 <p>State: <strong><%= @location.state %></strong></p>
-<p>HH Start: <strong><%= @location.start_time %></strong></p>
-<p>HH End: <strong><%= @location.end_time %></strong></p>
+<p>Happy Hour: <strong><%= @location.start_time.to_s(:quick) %></strong> to <strong><%= @location.end_time.to_s(:quick) %></strong></p>
 
 <%= link_to "Edit", edit_location_path, class: "btn btn-primary" %>
 <%= link_to "Delete", location_path, method: "delete", class: "btn btn-danger" %>
