@@ -1,9 +1,7 @@
 <%= form_for [@comment.location, @comment], remote: request.xhr? do |f|%>
-
   <%= f.label :comment %>
   <%= f.text_field :comment %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :location_id, :value => @comment.location.id %>
-  <%= f.submit 'Add Comment' %>
-
+  <%= f.submit %>
 <% end %>

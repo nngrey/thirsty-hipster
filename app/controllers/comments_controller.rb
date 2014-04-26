@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     @comment.update_attributes(comment_params)
     respond_to do |format|
       format.html { redirect_to location_path(@location) }
-      format.js { redirect_to location_path(@location, :format => :html) }
+      format.js
     end
   end
 
