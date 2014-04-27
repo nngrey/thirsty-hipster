@@ -5,7 +5,7 @@ class Location < ActiveRecord::Base
   has_many :users, through: :comments
 
   def yelp_check
-    name = name.gsub(/\s/, '+')
+    # name = name.gsub(/\s/, '+')
 
     consumer_key = ENV['CONSUMER_KEY']
     consumer_secret = ENV['CONSUMER_SECRET']
@@ -17,20 +17,22 @@ class Location < ActiveRecord::Base
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
     path = "/v2/search?term=#{name}&category_filter=bars&location=Portland&limit=5"
-    yelp_data = JSON.parse(access_token.get(path).body)
+    parsed_data = JSON.parse(access_token.get(path).body)
 
-    # ########################
+    locations_data = parsed_data['businesses']
 
-    # response = RestClient::Request.new(
-    #   :method => :get,
-    #   :url => "http://api.yelp.com/v2/search?category_filter=bars&location=#{@location.name}",
-    #   consumer = OAuth::Consumer.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'], {:site => "http://#{api_host}"})
-    #   access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
-    #   ).execute
+    locations = []
 
-    # api_host = 'api.yelp.com'
+    # hash.reject {|k,v| ![:a,:b].include?(k)}
 
-    # yelp_data = JSON(access_token.get(response).body)
+    locations_data.each do |location|
+      locations << location.reject {|key, value| !["name", "location"].include?(key)}
+    end
+
+    locations
+
+    # locations = locations_data.first.reject {|key, value| key != "name"}
+
   end
 
 end

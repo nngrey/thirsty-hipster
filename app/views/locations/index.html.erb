@@ -1,7 +1,18 @@
-<h1>Locations</h1>
-<%= link_to "Add New Location", new_location_path, class: "btn btn-success" %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-1">
 
-<% @locations.each do |location| %>
-  <h3><%= link_to "#{location.name}", location_path(location) %></h3>
-  <p><%=location.city %>, <%=location.state %><p>
-<% end %>
+		<h1>Locations</h1>
+		<%= link_to "Add New Location", new_location_path, class: "btn btn-success" %>
+
+		<% @locations.each do |location| %>
+		  <h3><%= link_to "#{location.name}", location_path(location) %></h3>
+		  <p><%=location.city %>, <%=location.state %><p>
+		<% end %>
+	</div>
+
+  <div class="col-md-4">
+		<div class="container">
+			<h1>New Search</h1>
+			<%= render 'searches/form' %>
+		</div>
+	</div>
