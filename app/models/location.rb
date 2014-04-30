@@ -22,16 +22,18 @@ class Location < ActiveRecord::Base
     locations_data = parsed_data['businesses']
 
     locations = []
+    locs = []
 
-    # hash.reject {|k,v| ![:a,:b].include?(k)}
+    # locations_data.each do |location|
+    #   locations << location.reject {|key, value| !["name", "location", "rating_img_url"].include?(key)}
+    # end
 
     locations_data.each do |location|
-      locations << location.reject {|key, value| !["name", "location"].include?(key)}
+      new_location = Location.new(name: location["name"], address: location["location"]["address"][0], city: location["location"]["city"], state: location["location"]["state_code"], rating: location["rating_img_url"])
+      locs << new_location
     end
 
-    locations
-
-    # locations = locations_data.first.reject {|key, value| key != "name"}
+    locs
 
   end
 
