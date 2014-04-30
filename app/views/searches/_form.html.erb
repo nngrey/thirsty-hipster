@@ -1,7 +1,20 @@
 
 <%= form_tag new_search_path do %>
   <div class="form_group">
-    <%= text_field_tag :name %>
+  	<%= label_tag :address %><br>
+    <%= text_field_tag :address %>
+  </div><br>
+   <div class="form_group">
+    <%= label_tag :city %><br>
+    <%= text_field_tag :city %>
+  </div><br>
+  <div class="form_group">
+    <%= label_tag :state %><br>
+    <%= text_field_tag :state %>
+  </div><br>
+  <div class="form_group">
+    <%= label_tag :zip %><br>
+    <%= text_field_tag :zip %>
   </div><br>
   <%= submit_tag "Search", :class => "btn btn-primary" %>
 <% end %>
