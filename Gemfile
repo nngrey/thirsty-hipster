@@ -19,7 +19,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'pry'
 end
 
 group :test, :development do
@@ -32,11 +31,11 @@ group :test, :development do
   gem 'letter_opener'
   gem 'dotenv-rails'
   gem 'database_cleaner'
+  gem 'pry'
 end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'pry'
   gem 'vcr'
   gem 'webmock'
   gem 'database_cleaner'

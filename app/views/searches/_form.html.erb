@@ -1,20 +1,19 @@
-
-<%= form_tag new_search_path do %>
+<%= form_for @search do |f| %>
   <div class="form_group">
-  	<%= label_tag :address %><br>
-    <%= text_field_tag :address %>
+  	<%= f.label :address %><br>
+    <%= f.text_field :address %>
   </div><br>
    <div class="form_group">
-    <%= label_tag :city %><br>
-    <%= text_field_tag :city %>
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
   </div><br>
   <div class="form_group">
-    <%= label_tag :state %><br>
-    <%= text_field_tag :state %>
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
   </div><br>
   <div class="form_group">
-    <%= label_tag :zip %><br>
-    <%= text_field_tag :zip %>
+    <%= f.label :zip %><br>
+    <%= f.text_field :zip %>
   </div><br>
-  <%= submit_tag "Search", :class => "btn btn-primary" %>
+  <%= f.submit(:class => "btn btn-primary") %>
 <% end %>

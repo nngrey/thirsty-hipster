@@ -1,5 +1,5 @@
 ThirstyHipster::Application.routes.draw do
-  root to: 'locations#index'
+  root to: 'searches#index'
   devise_for :users
   resources :locations do
     resources :comments
