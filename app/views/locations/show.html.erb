@@ -2,12 +2,17 @@
 <p>Address: <strong><%= @location.address %></strong></p>
 <p>City: <strong><%= @location.city %></strong></p>
 <p>State: <strong><%= @location.state %></strong></p>
+<p>Zip: <strong><%= @location.zip %></strong></p>
 <p>Happy Hour: <strong><%= @location.start_time.to_s(:quick) %></strong> to <strong><%= @location.end_time.to_s(:quick) %></strong></p>
 
 <%= link_to "Edit", edit_location_path, class: "btn btn-primary" %>
 <%= link_to "Delete", location_path, method: "delete", class: "btn btn-danger" %>
 
 <hr>
+
+<% if current_user == nil %>
+  <p><em>Must be logged in to leave a comment.</em></p>
+<% end %>
 
 <p><%= link_to "New Comment", new_location_comment_path(@location), id: "new_link", remote: true %></p>
 
