@@ -4,7 +4,7 @@
   <div class="form_group">
     <%=f.label :name, "Name" %> <br>
     <%=f.text_field :name, :value => params[:name] %>
-  </div>
+  </div><br>
 
   <div class="form_group">
     <%=f.label :description, "Description" %> <br>
@@ -39,11 +39,6 @@
   <div class="form_group">
     <%=f.label :end_time, "Ending Time" %> <br>
     <%=f.time_field :end_time %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :url, "Web Site URL" %> <br>
-    <%=f.text_field :url %>
   </div> <br>
 
   <%= f.submit(:class => "btn btn-primary") %>

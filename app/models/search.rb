@@ -7,7 +7,7 @@ class Search
     consumer = OAuth::Consumer.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'], {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
-    path = "/v2/search?term=bars&location=" + zip
+    path = "/v2/search?term=bars&breweries&location=" + zip
 
     parsed_data = JSON.parse(access_token.get(path).body)
 

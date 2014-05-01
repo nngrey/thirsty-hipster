@@ -4,7 +4,7 @@
 		<h1>Locations</h1>
 
 		<% if @results != [] %>
-			<%= link_to "Add New Location", new_location_path, class: "btn btn-success" %>
+			<%= link_to "Add New Location", new_search_path, class: "btn btn-success" %>
 			<% @results.each do |result| %>
 				<h3><%= link_to "#{result.name}", location_path(result) %></h3>
 				<p><%= result.city %>, <%= result.state %> <%= result.zip %></p>
