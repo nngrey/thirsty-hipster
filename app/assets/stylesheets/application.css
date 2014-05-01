@@ -13,8 +13,8 @@
  *= require 'bootstrap'
  */
 #hipster {
-  padding-left: 40px;
-  padding-top: 10px;
+  padding-right: 180px;
+  float: right !important;
 }
 
 #caption1 {
