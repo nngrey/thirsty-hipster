@@ -1,8 +1,9 @@
 class LocationsController < ApplicationController
 
   def index
-    @location=Location.new
+
     @locations = Location.all
+    @results = @locations.where(:zip => params[:zip])
   end
 
   def new
