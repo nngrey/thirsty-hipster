@@ -1,45 +1,9 @@
 <%= render 'layouts/errors', :object => @location %>
-<%= form_for @location do |f| %>
 
+<%= form_tag searches_path do %>
   <div class="form_group">
-    <%=f.label :name, "Name" %> <br>
-    <%=f.text_field :name %>
-  </div>
-
-  <div class="form_group">
-    <%=f.label :description, "Description" %> <br>
-    <%=f.text_area :description %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :address, "Street Address" %> <br>
-    <%=f.text_field :address %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :city, "City" %> <br>
-    <%=f.text_field :city %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :state, "State" %> <br>
-    <%=f.text_field :state %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :start_time, "Starting Time" %> <br>
-    <%=f.time_field :start_time %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :end_time, "Ending Time" %> <br>
-    <%=f.time_field :end_time %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :url, "Web Site URL" %> <br>
-    <%=f.text_field :url %>
-  </div> <br>
-
-  <%= f.submit(:class => "btn btn-primary") %>
+    <%= label_tag :zip %><br>
+    <%= text_field_tag :zip %>
+  </div><br>
+  <%= submit_tag "Search", :class => "btn btn-primary" %>
 <% end %>
