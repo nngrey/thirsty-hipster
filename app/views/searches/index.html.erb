@@ -1,0 +1,28 @@
+<div class="row">
+
+  <div class="col-md-6 col-md-offset-1">
+    <h1>Results</h1>
+
+    <% if @response != nil %>
+      <% @response.each do |location|%>
+        <h4><%= location.name %></h4>
+        <%= image_tag location.rating %>
+        <%= location.address %>, <%= location.city %>, <%= location.state %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <h1>Thirsty?</h1>
+    <div class="container">
+      <%= render 'form' %>
+    </div><br>
+    <div>
+      <%= image_tag "hip.jpg", :alt => "hipster", id: "hipster" %>
+      <h4><span id="caption"></span></h4>
+    </div>
+  </div>
+</div>
+
+
+

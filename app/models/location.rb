@@ -16,7 +16,8 @@ class Location < ActiveRecord::Base
     consumer = OAuth::Consumer.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'], {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
-    path = "/v2/search?term=category_filter=bars&location=Portland&limit=5"
+    path = "/v2/search?term=category_filter=bars&location=Portland&limit=10"
+
     parsed_data = JSON.parse(access_token.get(path).body)
 
     locations_data = parsed_data['businesses']
@@ -29,8 +30,8 @@ class Location < ActiveRecord::Base
       locs << new_location
     end
 
-    locs
 
+    locs
   end
 
 end

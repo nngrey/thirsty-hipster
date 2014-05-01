@@ -8,11 +8,17 @@
 		  <h3><%= link_to "#{location.name}", location_path(location) %></h3>
 		  <p><%=location.city %>, <%=location.state %><p>
 		<% end %>
+
+			    <h1>Results</h1>
+
+
 	</div>
+
+
 
   <div class="col-md-4">
 		<div class="container">
 			<h1>New Search</h1>
-			<%= render 'searches/form' %>
+			<%= render 'form' %>
 		</div>
 	</div>
