@@ -7,11 +7,6 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
-
-    #if params[:location][:name]
-      #@results = @location.yelp_check
-      # render jquery
-    #end
   end
 
   def create
