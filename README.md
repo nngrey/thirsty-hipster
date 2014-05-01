@@ -20,17 +20,13 @@ Useful Docs
 https://medium.com/wdi-nyc-jan-2014/1e286c83e72e
 http://www.yelp.com/developers/documentation/v2/overview
 
+** FUTURE TO-DO LIST **
 
-**UI for Adding a New Establishment to Thirsty Hipster's Database**
+* add phone numbers to locations (table, controller, form, and through YELP query)
+* add review count to locations (table, controller, form, and through YELP query)
+* add image url to locations (table, controller, form, and through YELP query)
+* remove url from locations table
+* consider the fact that the yelp search doesn't return strictly by zip
 
-1.  visit root_path
-2.  click "add location"
-3.  render new_search_path (and form)
-4.  user enters name, clicks "Search Yelp" button
-5.  search w/ yelp_check using new search object
-6.  yelp_check run on the name entered, first 5 results are displayed on the page with name and address
-7.  user selects correct result
-8.  new_location_path, with "new" form displayed, with name, address, and URL pre-populated
-9.  user enters happy hour start and end times and description
-10.  click "create location"
-11.  redirect_to location_path(@location)
+
+
