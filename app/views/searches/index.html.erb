@@ -5,7 +5,7 @@
 
     <% if @response != nil %>
       <% @response.each do |location|%>
-        <h4><%= location.name %></h4>
+        <h4><%= link_to "#{location.name}", new_location_path({:name => location.name, :address => location.address, :city => location.city, :state => location.state, :zip => location.zip}) %></h4>
         <%= image_tag location.rating %>
         <%= location.address %>, <%= location.city %>, <%= location.state %>
       <% end %>

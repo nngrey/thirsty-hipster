@@ -3,7 +3,7 @@
 
   <div class="form_group">
     <%=f.label :name, "Name" %> <br>
-    <%=f.text_field :name %>
+    <%=f.text_field :name, :value => params[:name] %>
   </div>
 
   <div class="form_group">
@@ -13,17 +13,22 @@
 
   <div class="form_group">
     <%=f.label :address, "Street Address" %> <br>
-    <%=f.text_field :address %>
+    <%=f.text_field :address, :value => params[:address] %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :city, "City" %> <br>
-    <%=f.text_field :city %>
+    <%=f.text_field :city, :value => params[:city] %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :state, "State" %> <br>
-    <%=f.text_field :state %>
+    <%=f.text_field :state, :value => params[:state] %>
+  </div> <br>
+
+  <div class="form_group">
+    <%=f.label :zip, "Zipcode" %> <br>
+    <%=f.text_field :zip, :value => params[:zip] %>
   </div> <br>
 
   <div class="form_group">
