@@ -20,3 +20,9 @@
 #caption1 {
   text-align: right;
 }
+
+#map-canvas {
+  position: absolute;
+  height: 40%;
+  width: 40%;
+}

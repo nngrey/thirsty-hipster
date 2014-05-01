@@ -1,6 +1,5 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-1">
-
 		<h1>Locations</h1>
 		<%= link_to "Add New Location", new_location_path, class: "btn btn-success" %>
 
@@ -9,11 +8,8 @@
 		  <p><%=location.city %>, <%=location.state %><p>
 		<% end %>
 
-			    <h1>Results</h1>
-
-
+		<h1>Results</h1>
 	</div>
-
 
 
   <div class="col-md-4">
@@ -22,3 +18,8 @@
 			<%= render 'form' %>
 		</div>
 	</div>
+</div>
+
+
+<div id="map-canvas"></div>
+
