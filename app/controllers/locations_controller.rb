@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
 
   def index
+    @location=Location.new
     @locations = Location.all
   end
 

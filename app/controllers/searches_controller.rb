@@ -1,5 +1,13 @@
 class SearchesController < ApplicationController
 
+  # attr_reader :address, :city, :state, :zip
+
+  # def initialize(address, city, state, zip)
+  #   @address = address
+  #   @city = city
+  #   @state = state
+  #   @zip = zip
+  # end
   def index
     @search = Search.new
   end
@@ -9,13 +17,13 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = Search.new(search_params)
-    if @search.save
-      @results = Search.yelp_check
-      redirect_to searches_path
-    else
-      render 'new'
-    end
+    @search = Search.new
+    @response = @search.yelp_check(params[:zip])
+    render 'index'
+  end
+
+  def show
+    @search = Search.find(params[:id])
   end
 
 private

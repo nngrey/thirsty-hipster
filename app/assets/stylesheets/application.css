@@ -12,3 +12,11 @@
  *= require_tree .
  *= require 'bootstrap'
  */
+#hipster {
+  padding-left: 40px;
+  padding-top: 10px;
+}
+
+#caption1 {
+  text-align: right;
+}
