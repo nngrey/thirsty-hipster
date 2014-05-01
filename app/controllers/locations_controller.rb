@@ -1,17 +1,13 @@
 class LocationsController < ApplicationController
 
   def index
-    @location=Location.new
+
     @locations = Location.all
+    @results = @locations.where(:zip => params[:zip])
   end
 
   def new
     @location = Location.new
-
-    #if params[:location][:name]
-      #@results = @location.yelp_check
-      # render jquery
-    #end
   end
 
   def create
