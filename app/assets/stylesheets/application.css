@@ -21,3 +21,9 @@
 .tab {
   padding-left: 30px;
 }
+
+#map-canvas {
+  position: absolute;
+  height: 40%;
+  width: 40%;
+}
