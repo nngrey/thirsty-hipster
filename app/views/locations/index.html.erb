@@ -4,7 +4,11 @@
 		<h1>Locations</h1>
 
 		<% if @results != [] %>
-			<%= link_to "Add New Location", new_search_path, class: "btn btn-success" %>
+			<%= form_tag searches_path do %>
+			  <%= hidden_field_tag :zip, :value => params[:zip] %>
+			  <%= submit_tag "Add New Location", :class => "btn btn-primary" %>
+			<% end %>
+
 			<% @results.each do |result| %>
 				<h3><%= link_to "#{result.name}", location_path(result) %></h3>
 				<p><%= result.city %>, <%= result.state %> <%= result.zip %></p>

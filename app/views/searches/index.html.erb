@@ -12,19 +12,13 @@
       <% end %>
       <br>
       <br>
-      <%= link_to "Add New Location if Not Listed Above", new_search_path, class: "btn btn-success" %>
+      <%= link_to "Add New Location if Not Listed Above", new_location_path, class: "btn btn-success" %>
     <% end %>
   </div>
 
   <div class="col-md-4">
-    <h1>Thirsty?</h1>
-    <div class="container">
-      <%= render 'form' %>
-    </div><br>
-    <div class="container">
-      <%= image_tag "hip2.jpg", :alt => "hipster", id: "hipster" %>
-      <h4><span id="caption"></span></h4>
-    </div>
+    <%= image_tag "hip2.jpg", :alt => "hipster", id: "hipster" %>
+
   </div>
 </div>
 

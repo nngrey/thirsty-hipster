@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.new
-    @response = @search.yelp_check(params[:zip])
+    @response = @search.yelp_check(eval(params[:zip]))
     render 'index'
   end
 
