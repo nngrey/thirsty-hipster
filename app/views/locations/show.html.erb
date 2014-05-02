@@ -4,6 +4,8 @@
 <p>State: <strong><%= @location.state %></strong></p>
 <p>Zip: <strong><%= @location.zip %></strong></p>
 <p>Happy Hour: <strong><%= @location.start_time.to_s(:quick) %></strong> to <strong><%= @location.end_time.to_s(:quick) %></strong></p>
+<p>Happy Hour Specials:</p>
+<p class="tab"><%= @location.description %></p>
 
 <%= link_to "Edit", edit_location_path, class: "btn btn-primary" %>
 <%= link_to "Delete", location_path, method: "delete", class: "btn btn-danger" %>
