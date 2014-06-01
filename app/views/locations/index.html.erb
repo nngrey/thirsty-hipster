@@ -16,17 +16,12 @@
 
   <div class="col-md-4 col-md-offset-1">
 		<h2>Locations</h2>
-		<% if @results != [] %>
-			<%= form_tag searches_path do %>
-			  <%= hidden_field_tag :zip, :value => params[:zip] %>
-			  <%= submit_tag "Add New Location", :class => "btn btn-primary" %>
-			<% end %>
+
 
 			<% @results.each do |result| %>
 				<h3><%= link_to "#{result.name}", location_path(result) %></h3>
 				<p><%= result.city %>, <%= result.state %> <%= result.zip %></p>
 			<% end %>
-		<% end %>
 	</div>
 </div>
 
