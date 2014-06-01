@@ -8,7 +8,7 @@ class Search
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
 
-    path = "/v2/search?term=bars&breweries&location=" + zip[:value]
+    path = "/v2/search?term=bars&breweries&location=" + zip.to_s
 
     parsed_data = JSON.parse(access_token.get(path).body)
 
