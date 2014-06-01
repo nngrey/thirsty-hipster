@@ -12,7 +12,8 @@
       body { height: 100%; margin: 0; padding: 0 }
     </style>
     <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8UkbPH1NKb5Vv18dF5L7H6H3l_T5HCww&sensor=false">
+      key=ENV['API_KEY']
+      src="https://maps.googleapis.com/maps/api/js?key&sensor=false">
     </script>
     <script type="text/javascript">
       function initialize() {
@@ -64,7 +65,7 @@
               <% end %>
 
               <% if user_signed_in? %>
-              <li><%= link_to "Add Location", new_search_path %></li>
+              <li><%= link_to "Add Location", searches_path %></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
                   <ul class="dropdown-menu">

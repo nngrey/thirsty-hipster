@@ -1,24 +1,21 @@
 <div class="row">
+  <div class="col-md-5">
+    <h1>Add a Happy Hour</h1>
+    <p>Search for local bars by entering their zip code. Then, update the entry with information about its happy hour. If you don't find your bar, you can create an entry from scratch.
+    <%= render 'form' %>
+  </div>
 
   <div class="col-md-6 col-md-offset-1">
-    <h1>Results</h1>
-
     <% if @response != nil %>
+    <h1>Results</h1>
       <p>Select the bar you want to add to the Thirsty Hipster happy hour database</p>
       <% @response.each do |location|%>
         <h4><%= link_to "#{location.name}", new_location_path({:name => location.name, :address => location.address, :city => location.city, :state => location.state, :zip => location.zip}) %></h4>
         <%= image_tag location.rating %>
         <%= location.address %>, <%= location.city %>, <%= location.state %>
-      <% end %>
-      <br>
-      <br>
+      <% end %><br><br>
       <%= link_to "Add New Location if Not Listed Above", new_location_path, class: "btn btn-success" %>
     <% end %>
-  </div>
-
-  <div class="col-md-4">
-    <%= image_tag "hip2.jpg", :alt => "hipster", id: "hipster" %>
-
   </div>
 </div>
 
