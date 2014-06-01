@@ -15,16 +15,49 @@
       key=ENV['API_KEY']
       src="https://maps.googleapis.com/maps/api/js?key&sensor=false">
     </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(45.526083, -122.678455),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"),
-            mapOptions);
+   <script type="text/javascript">
+       function initialize() {
+
+      //   var myLatlng = new google.maps.LatLng(45.526083, -122.678455);
+      //   var mapOptions = {
+      //     center: myLatlng,
+      //     zoom: 10,
+      //   }
+      //   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+      //   var marker = new google.maps.Marker({
+      //       position: myLatlng,
+      //       map: map,
+      //       title:"Hello World!"
+      //   });
+      //   // To add the marker to the map, call setMap();
+      //   marker.setMap(map);
+      // }
+
+      var locations = [
+        ['Clyde Common', 45.522115,-122.681445],
+        ['Interurban', 45.552972,-122.675647],
+        ['Imperial', 45.5269035,-122.6499644],
+        ['Tasty N Sons', 45.550327,-122.66639],
+        ['Cassidys Restaurant', 45.522483,-122.685129],
+        ['Slow Bar', 45.518762,-122.660955]
+      ];
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 12,
+        center: new google.maps.LatLng(45.526083, -122.678455),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+      var marker, i;
+
+      for (i = 0; i < locations.length; i++) {  
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          map: map,
+          title:locations[i][0]
+        });
       }
+    }
     </script>
 
 <!-- ****************************************** -->
