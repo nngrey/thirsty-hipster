@@ -24,6 +24,6 @@
 
 #map-canvas {
   position: absolute;
-  height: 40%;
-  width: 40%;
+  height: 150%;
+  width: 100%;
 }
