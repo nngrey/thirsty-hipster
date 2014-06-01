@@ -2,7 +2,7 @@
 
 	<div class="col-md-6">
 			<h2>Search for Local Happy Hours</h2>
-			<h5><em>Thirsty Hipster helps you find the best local happy hours! Users can add and review new locations at any time.</em></h5>
+			<h5><em>Thirsty Hipster helps you find the best local happy hours based on users recommendation. Search current listings or add and review new ones.</em></h5>
 			<%= form_tag("/locations", method: "get") do %>
 			  <div class="form_group">
 			    <%= label_tag :zip, "Zipcode: " %><br>
@@ -13,17 +13,11 @@
 		<div id="map-canvas"></div>
 	</div>
 
-
   <div class="col-md-4 col-md-offset-1">
 		<h2>Locations</h2>
-
-
 			<% @results.each do |result| %>
 				<h3><%= link_to "#{result.name}", location_path(result) %></h3>
 				<p><%= result.city %>, <%= result.state %> <%= result.zip %></p>
 			<% end %>
 	</div>
 </div>
-
-
-
