@@ -1,9 +1,11 @@
 The Thirsty Hipster App
 ======================
 
+Epicodus Exercise
+
 Summary
 --------
-Thirsty Hipster is a location-based service that utilizes a proprietary approximation algorithm to determine ideal happy hour locations.
+Thirsty Hipster is a Rails app that allows users to add and review local happy hours. It accesses the Yelp API to prepoulate fields and it will eventually map location using Google maps API. 
 
 User Stories
 -----------
@@ -20,13 +22,6 @@ Useful Docs
 https://medium.com/wdi-nyc-jan-2014/1e286c83e72e
 http://www.yelp.com/developers/documentation/v2/overview
 
-** FUTURE TO-DO LIST **
-
-* add phone numbers to locations (table, controller, form, and through YELP query)
-* add review count to locations (table, controller, form, and through YELP query)
-* add image url to locations (table, controller, form, and through YELP query)
-* remove url from locations table
-* consider the fact that the yelp search doesn't return strictly by zip
 
 
 
