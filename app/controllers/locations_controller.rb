@@ -53,6 +53,6 @@ private
 
   def location_params
     params.require(:location).permit(:name, :address, :city, :state, :zip,
-                                    :start_time, :end_time, :description, :url)
+                                    :start_time, :end_time, :description, :url, :sunday)
   end
 end
