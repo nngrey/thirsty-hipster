@@ -1,6 +1,10 @@
 <%= form_tag searches_path do %>
   <div class="form_group">
-    <%= label_tag :zip %><br>
+    <%= label_tag :name %><br>
+    <%= text_field_tag :name %>
+  </div><br>
+  <div class="form_group">
+    <%= label_tag(:zip, "City or Zip") %><br>
     <%= text_field_tag :zip %>
   </div><br>
   <%= submit_tag "Search", :class => "btn btn-primary" %>

@@ -91,7 +91,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
+              <li><%= link_to "Add location", new_search_path %></li>
               <% if !user_signed_in? %>
                 <li><%= link_to "Sign up", new_user_registration_path %></li>
                 <li><%= link_to "Sign in", new_user_session_path %></li>

@@ -1,14 +1,17 @@
 class Search
 
-  def yelp_check(zip)
+  def yelp_check(input_name, input_city)
 
-    api_host = 'api.yelp.com'
+    name = input_name.strip.tr(" ", "_")
+    city = input_city.strip.tr(" ", "_")
+
+    api_host ='api.yelp.com'
 
     consumer = OAuth::Consumer.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'], {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
 
-    path = "/v2/search?term=bars&breweries&location="+zip.to_s
+    path = "/v2/search?term="+name+"&location="+city+"&limit=1"
 
     parsed_data = JSON.parse(access_token.get(path).body)
 
