@@ -7,9 +7,38 @@
   </div><br>
 
   <div class="form_group">
-    <%=f.label :description, "Description" %> <br>
-    <%=f.text_area :description %>
+    <%=f.label :description, "What are the Happy Hour specials?" %> <br>
+    <%=f.text_area :description, :rows=>5, :cols=>40%>
   </div> <br>
+
+  <div class="form_group">
+    <h5><strong>Which days have a Happy Hour?</strong></h5>
+    <%=f.label :sunday, "Sunday" %>
+    <%= f.check_box :sunday %>
+    <%=f.label :monday, "Monday" %>
+    <%= f.check_box :monday %>
+    <%=f.label :tuesday, "Tuesday" %>
+    <%= f.check_box :tuesday %>
+    <%=f.label :wednesday, "Wednesday" %>
+    <%= f.check_box :wednesday %>
+    <%=f.label :thursday, "Thursday" %>
+    <%= f.check_box :thursday %>
+    <%=f.label :friday, "Friday" %>
+    <%= f.check_box :friday %>
+    <%=f.label :saturday, "Saturday" %>
+    <%= f.check_box :saturday %>
+  </div> <br>
+
+  <div class="form_group">
+    <%=f.label :start_time, "Happy Hour Starting Time" %> <br>
+    <%=f.time_field :start_time %> 
+  </div> <br>
+
+  <div class="form_group">
+    <%=f.label :end_time, "Happy Hour Ending Time" %> <br>
+    <%=f.time_field :end_time %>
+  </div> <br>
+
 
   <div class="form_group">
     <%=f.label :address, "Street Address" %> <br>
@@ -29,21 +58,6 @@
   <div class="form_group">
     <%=f.label :zip, "Zipcode" %> <br>
     <%=f.text_field :zip, :value => params[:zip] %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :sunday, "Sunday" %>
-    <%= f.check_box :sunday %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :start_time, "Starting Time" %> <br>
-    <%=f.time_field :start_time %>
-  </div> <br>
-
-  <div class="form_group">
-    <%=f.label :end_time, "Ending Time" %> <br>
-    <%=f.time_field :end_time %>
   </div> <br>
 
   <%= f.submit(:class => "btn btn-primary") %>
