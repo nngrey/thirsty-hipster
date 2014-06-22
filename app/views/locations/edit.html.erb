@@ -34,6 +34,24 @@
   </div> <br>
 
   <div class="form_group">
+    <h5><strong>Which days have a Happy Hour?</strong></h5>
+    <%=f.label :sunday, "Sunday" %>
+    <%= f.check_box :sunday %>
+    <%=f.label :monday, "Monday" %>
+    <%= f.check_box :monday %>
+    <%=f.label :tuesday, "Tuesday" %>
+    <%= f.check_box :tuesday %>
+    <%=f.label :wednesday, "Wednesday" %>
+    <%= f.check_box :wednesday %>
+    <%=f.label :thursday, "Thursday" %>
+    <%= f.check_box :thursday %>
+    <%=f.label :friday, "Friday" %>
+    <%= f.check_box :friday %>
+    <%=f.label :saturday, "Saturday" %>
+    <%= f.check_box :saturday %>
+  </div> <br>
+
+  <div class="form_group">
     <%=f.label :start_time, "Starting Time" %> <br>
     <%=f.time_field :start_time %>
   </div> <br>

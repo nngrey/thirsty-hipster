@@ -3,7 +3,7 @@
 <p>City: <strong><%= @location.city %></strong></p>
 <p>State: <strong><%= @location.state %></strong></p>
 <p>Zip: <strong><%= @location.zip %></strong></p>
-<p>Days: <% if @location.sunday = 1 %>Sunday<% end %>
+<p>Days: <%= @sequence %>
 <p>Happy Hour: <strong><%= @location.start_time.to_s(:quick) %></strong> to <strong><%= @location.end_time.to_s(:quick) %></strong></p>
 <p>Happy Hour Specials:</p>
 <p class="tab"><%= @location.description %></p>

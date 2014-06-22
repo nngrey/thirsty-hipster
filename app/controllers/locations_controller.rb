@@ -22,6 +22,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
     @comment = Comment.new
+    @sequence = @location.day_sequence(@location)
     respond_to do |format|
       format.html
       format.js { render 'show.html.erb' }
@@ -53,6 +54,6 @@ private
 
   def location_params
     params.require(:location).permit(:name, :address, :city, :state, :zip,
-                                    :start_time, :end_time, :description, :url, :sunday)
+                                    :start_time, :end_time, :description, :url, :sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday)
   end
 end
