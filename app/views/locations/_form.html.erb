@@ -39,7 +39,6 @@
     <%=f.time_field :end_time %>
   </div> <br>
 
-
   <div class="form_group">
     <%=f.label :address, "Street Address" %> <br>
     <%=f.text_field :address, :value => params[:address] %>
@@ -58,6 +57,11 @@
   <div class="form_group">
     <%=f.label :zip, "Zipcode" %> <br>
     <%=f.text_field :zip, :value => params[:zip] %>
+  </div> <br>
+
+  <div class="form_group">
+    <%=f.label :phone, "Phone" %> <br>
+    <%=f.text_field :phone, :value => params[:phone] %>
   </div> <br>
 
   <%= f.submit(:class => "btn btn-primary") %>

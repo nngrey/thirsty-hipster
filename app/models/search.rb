@@ -21,7 +21,14 @@ class Search
 
     if locations_data
       locations_data.each do |location|
-        new_location = Location.new(name: location["name"], address: location["location"]["address"][0], city: location["location"]["city"], state: location["location"]["state_code"], rating: location["rating_img_url"], zip: location["location"]["postal_code"])
+        new_location = Location.new(name: location["name"], 
+                                    address: location["location"]["address"][0], 
+                                    city: location["location"]["city"],  
+                                    state: location["location"]["state_code"], 
+                                    rating: location["rating_img_url"], 
+                                    zip: location["location"]["postal_code"], 
+                                    phone: (location["display_phone"]).gsub(/\+1\-/, ''), 
+                                    display_address: location["location"]["display_address"])
         @found_locations << new_location
       end
     end
