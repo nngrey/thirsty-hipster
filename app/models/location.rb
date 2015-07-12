@@ -1,5 +1,10 @@
 class Location < ActiveRecord::Base
-  validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
+  attr_reader :address, :latitude, :longitude
+  geocoded_by :address
+  after_validation :geocode
+
+  # validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
+  # validates_absence_of :display_address
 
   has_many :comments
   has_many :users, through: :comments

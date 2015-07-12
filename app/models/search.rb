@@ -28,7 +28,7 @@ class Search
                                     rating: location["rating_img_url"], 
                                     zip: location["location"]["postal_code"], 
                                     phone: (location["display_phone"]).gsub(/\+1\-/, ''), 
-                                    display_address: location["location"]["display_address"])
+                                    display_address: (location["location"]["display_address"]).join(" ")  )
         @found_locations << new_location
       end
     end

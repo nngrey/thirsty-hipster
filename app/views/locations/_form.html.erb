@@ -40,7 +40,7 @@
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :address, "Street Address" %> <br>
+    <%=f.label :address, " Address" %> <br>
     <%=f.text_field :address, :value => params[:address] %>
   </div> <br>
 
@@ -58,6 +58,8 @@
     <%=f.label :zip, "Zipcode" %> <br>
     <%=f.text_field :zip, :value => params[:zip] %>
   </div> <br>
+
+  <%= f.text_field :display_address, :type => :hidden, :value => params[:display_address] %>
 
   <div class="form_group">
     <%=f.label :phone, "Phone" %> <br>

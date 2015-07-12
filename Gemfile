@@ -14,6 +14,7 @@ gem 'devise'
 gem 'textacular'
 gem 'rest-client'
 gem 'oauth'
+gem 'geocoder'
 
 group :development do
   gem 'better_errors'
