@@ -3,8 +3,8 @@ class Location < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
-  # validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
-  # validates_absence_of :display_address
+  validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
+  validates_absence_of :display_address
 
   has_many :comments
   has_many :users, through: :comments
@@ -13,7 +13,7 @@ class Location < ActiveRecord::Base
   	sequence = []
   	if sunday && monday && tuesday && wednesday && thursday && friday && saturday
   		sequence << "Sunday - Saturday"
-  	elsif monday && tuesday && wednesday && thursday && friday 
+  	elsif monday && tuesday && wednesday && thursday && friday
   		sequence << "Monday - Friday"
   	else
   		if sunday
