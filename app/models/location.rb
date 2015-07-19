@@ -1,10 +1,11 @@
 class Location < ActiveRecord::Base
-  attr_reader :address, :latitude, :longitude
-  geocoded_by :address
+  attr_reader :display_address, :latitude, :longitude
+
+  # TODO: The geocoding isn't working (Jeremy)
+  geocoded_by :display_address
   after_validation :geocode
 
   validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
-  validates_absence_of :display_address
 
   has_many :comments
   has_many :users, through: :comments

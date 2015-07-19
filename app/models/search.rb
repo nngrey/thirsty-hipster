@@ -11,7 +11,7 @@ class Search
     access_token = OAuth::AccessToken.new(consumer, ENV['TOKEN'], ENV['TOKEN_SECRET'])
 
 
-    path = "/v2/search?term="+name+"&location="+city+"&limit=1"
+    path = "/v2/search?term="+name+"&location="+city+"&limit=5"
 
     parsed_data = JSON.parse(access_token.get(path).body)
 
@@ -21,13 +21,14 @@ class Search
 
     if locations_data
       locations_data.each do |location|
+        phone = (location["display_phone"]).gsub(/\+1\-/, '') if location["display_phone"]
         new_location = Location.new(name: location["name"], 
                                     address: location["location"]["address"][0], 
                                     city: location["location"]["city"],  
                                     state: location["location"]["state_code"], 
                                     rating: location["rating_img_url"], 
                                     zip: location["location"]["postal_code"], 
-                                    phone: (location["display_phone"]).gsub(/\+1\-/, ''), 
+                                    phone: phone, 
                                     display_address: (location["location"]["display_address"]).join(" ")  )
         @found_locations << new_location
       end
