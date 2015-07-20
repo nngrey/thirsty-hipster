@@ -10,6 +10,10 @@ class LocationsController < ApplicationController
   end
 
   def create
+
+    params[:location].parse_time_select! :start_time
+    params[:location].parse_time_select! :end_time
+
     @location = Location.new(location_params)
     if @location.save
       flash[:notice]="New location created."
@@ -34,6 +38,9 @@ class LocationsController < ApplicationController
   end
 
   def update
+    params[:location].parse_time_select! :start_time
+    params[:location].parse_time_select! :end_time
+
     @location = Location.find(params[:id])
     if @location.update(location_params)
       flash[:notice]="Location updated."
