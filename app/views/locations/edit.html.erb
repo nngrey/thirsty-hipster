@@ -52,13 +52,35 @@
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :start_time, "Starting Time" %> <br>
-    <%=f.time_field :start_time %>
+    <%=f.label :start_time, "Happy Hour Starting Time" %> <br>
+    <%= f.time_select :start_time,
+      :labels => false,
+      :combined => true,
+      :default => Time.now.change(:hour => 15, :min => 00),
+      :minute_interval => 30,
+      :time_separator => "",
+      :start_hour => 12,
+      :start_minute => 00,
+      :end_hour => 23,
+      :end_minute => 00,
+      :ampm => true
+    %>
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :end_time, "Ending Time" %> <br>
-    <%=f.time_field :end_time %>
+    <%=f.label :end_time, "Happy Hour Ending Time" %> <br>
+    <%= f.time_select :end_time,
+      :labels => false,
+      :combined => true,
+      :default => Time.now.change(:hour => 15, :min => 00),
+      :minute_interval => 30,
+      :time_separator => "",
+      :start_hour => 12,
+      :start_minute => 00,
+      :end_hour => 23,
+      :end_minute => 00,
+      :ampm => true
+    %>
   </div> <br>
 
   <div class="form_group">
