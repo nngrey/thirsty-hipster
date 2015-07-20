@@ -51,6 +51,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    combined_time_select (1.0.1)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.2.0)
@@ -204,6 +205,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails
+  combined_time_select (~> 1.0.1)
   database_cleaner
   devise
   dotenv-rails

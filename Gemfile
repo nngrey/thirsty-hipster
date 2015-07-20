@@ -15,6 +15,7 @@ gem 'textacular'
 gem 'rest-client'
 gem 'oauth'
 gem 'geocoder'
+gem "combined_time_select", "~> 1.0.1"
 
 group :development do
   gem 'better_errors'
