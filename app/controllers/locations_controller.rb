@@ -15,6 +15,7 @@ class LocationsController < ApplicationController
     params[:location].parse_time_select! :end_time
 
     @location = Location.new(location_params)
+    # WIP: geocode!(params[:display_address])
     if @location.save
       flash[:notice]="New location created."
       redirect_to location_path(@location)
@@ -60,9 +61,11 @@ class LocationsController < ApplicationController
 private
 
   def location_params
-    params.require(:location).permit(:name, :address, :city, :state, :zip, :phone, :display_address,
-                                    :start_time, :end_time, :description, :url,
-                                    :sunday, :monday, :tuesday, :wednesday,
-                                    :thursday, :friday, :saturday, :latitude, :longitude)
+    params.require(:location).permit(
+      :name, :address, :city, :state, :zip, :phone, :display_address,
+      :start_time, :end_time, :description, :url,
+      :sunday, :monday, :tuesday, :wednesday,
+      :thursday, :friday, :saturday, :latitude, :longitude
+    )
   end
 end

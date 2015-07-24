@@ -10,10 +10,10 @@ class SearchesController < ApplicationController
 
   def create
     @search = Search.new
-    if params[:name] == "" || params[:zip] == ""
+    if params[:name] == "" || params[:city] == ""
       flash[:alert] = "Please enter a valid name and city or zip."
     end
-    @response = @search.yelp_check(params[:name], params[:zip])
+    @response = @search.yelp_check(params[:name], params[:city])
     render 'index'
   end
 

@@ -3,12 +3,18 @@ class Location < ActiveRecord::Base
 
   # TODO: The geocoding isn't working (Jeremy)
   geocoded_by :display_address
-  after_validation :geocode
+  # after_validation :geocode
 
   validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
 
   has_many :comments
   has_many :users, through: :comments
+
+  # WIP:
+  # def geocode! location
+  #   result = Geocode.search(location)
+  #   self.update_attributes(latitude: result[:lat], longitude: result[:lon])
+  # end
 
   def day_sequence(location)
   	sequence = []
