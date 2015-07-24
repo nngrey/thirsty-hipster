@@ -1,9 +1,10 @@
+
 <%= render 'layouts/errors', :object => @location %>
 <%= form_for @location do |f| %>
 
   <div class="form_group">
     <%=f.label :name, "Name" %> <br>
-    <%=f.text_field :name, :value => params[:name] %>
+    <%=f.text_field :name, :value => params[:name] || params[:location][:name]%>
   </div><br>
 
   <div class="form_group">
@@ -13,20 +14,20 @@
 
   <div class="form_group">
     <h5><strong>Which days have a Happy Hour?</strong></h5>
-    <%=f.label :sunday, "Sunday" %>
     <%= f.check_box :sunday %>
-    <%=f.label :monday, "Monday" %>
+    <%=f.label :sunday, "Sunday" %>
     <%= f.check_box :monday %>
-    <%=f.label :tuesday, "Tuesday" %>
+    <%=f.label :monday, "Monday" %>
     <%= f.check_box :tuesday %>
-    <%=f.label :wednesday, "Wednesday" %>
+    <%=f.label :tuesday, "Tuesday" %>
     <%= f.check_box :wednesday %>
-    <%=f.label :thursday, "Thursday" %>
+    <%=f.label :wednesday, "Wednesday" %>
     <%= f.check_box :thursday %>
-    <%=f.label :friday, "Friday" %>
+    <%=f.label :thursday, "Thursday" %>
     <%= f.check_box :friday %>
-    <%=f.label :saturday, "Saturday" %>
+    <%=f.label :friday, "Friday" %>
     <%= f.check_box :saturday %>
+    <%=f.label :saturday, "Saturday" %>
   </div> <br>
 
   <div class="form_group">
@@ -63,29 +64,29 @@
 
   <div class="form_group">
     <%=f.label :address, " Address" %> <br>
-    <%=f.text_field :address, :value => params[:address] %>
+    <%=f.text_field :address, :value => params[:address] || params[:location][:address] %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :city, "City" %> <br>
-    <%=f.text_field :city, :value => params[:city] %>
+    <%=f.text_field :city, :value => params[:city] || params[:location][:city] %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :state, "State" %> <br>
-    <%=f.text_field :state, :value => params[:state] %>
+    <%=f.text_field :state, :value => params[:state] || params[:location][:state] %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :zip, "Zipcode" %> <br>
-    <%=f.text_field :zip, :value => params[:zip] %>
+    <%=f.text_field :zip, :value => params[:zip] || params[:location][:zip] %>
   </div> <br>
 
-  <%= f.text_field :display_address, :type => :hidden, :value => params[:display_address] %>
+  <%= f.text_field :display_address, :type => :hidden, :value => params[:display_address] || params[:location][:display_address] %>
 
   <div class="form_group">
     <%=f.label :phone, "Phone" %> <br>
-    <%=f.text_field :phone, :value => params[:phone] %>
+    <%=f.text_field :phone, :value => params[:phone] || params[:location][:phone] %>
   </div> <br>
 
   <%= f.submit(:class => "btn btn-primary") %>
