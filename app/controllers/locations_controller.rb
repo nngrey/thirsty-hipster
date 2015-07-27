@@ -3,6 +3,7 @@ class LocationsController < ApplicationController
   def index
     @locations = Location.all
     @results = @locations.where(:zip => params[:zip])
+    @places = @results.map{|r| [r.name, r['latitude'], r['longitude']]}
   end
 
   def new
