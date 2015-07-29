@@ -1,14 +1,17 @@
 class Location < ActiveRecord::Base
   attr_reader :display_address, :latitude, :longitude
 
-  # TODO: The geocoding isn't working (Jeremy)
-  geocoded_by :display_address
+  geocoded_by :street_address
   after_validation :geocode
 
   validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
 
   has_many :comments
   has_many :users, through: :comments
+
+  def street_address
+    [address, city, state, 'US'].compact.join(', ')
+  end
 
   def day_sequence(location)
   	sequence = []

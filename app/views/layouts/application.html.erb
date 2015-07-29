@@ -32,29 +32,22 @@
       //   // To add the marker to the map, call setMap();
       //   marker.setMap(map);
       // }
-
-      var locations = [
-        ['Clyde Common', 45.522115,-122.681445],
-        ['Interurban', 45.552972,-122.675647],
-        ['Imperial', 45.5269035,-122.6499644],
-        ['Tasty N Sons', 45.550327,-122.66639],
-        ['Cassidys Restaurant', 45.522483,-122.685129],
-        ['Slow Bar', 45.518762,-122.660955]
-      ];
+      var places = <%= raw @places.as_json -%>;
 
       var map = new google.maps.Map(document.getElementById('map-canvas'), {
         zoom: 12,
-        center: new google.maps.LatLng(45.526083, -122.678455),
+        // we need to update the center to the center point of the zip added
+        center: new google.maps.LatLng(places[0][1], places[0][2]),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
       var marker, i;
 
-      for (i = 0; i < locations.length; i++) {  
+      for (i = 0; i < places.length; i++) {
         marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          position: new google.maps.LatLng(places[i][1], places[i][2]),
           map: map,
-          title:locations[i][0]
+          title:places[i][0]
         });
       }
     }
