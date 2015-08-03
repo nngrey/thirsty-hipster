@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  # respond_to :js, :json, :html
 
   def index
     @locations = Location.all

@@ -16,40 +16,48 @@
       src="https://maps.googleapis.com/maps/api/js?key&sensor=false">
     </script>
    <script type="text/javascript">
-       function initialize() {
+    function initialize() {
 
-      //   var myLatlng = new google.maps.LatLng(45.526083, -122.678455);
-      //   var mapOptions = {
-      //     center: myLatlng,
-      //     zoom: 10,
-      //   }
-      //   var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-      //   var marker = new google.maps.Marker({
-      //       position: myLatlng,
-      //       map: map,
-      //       title:"Hello World!"
-      //   });
-      //   // To add the marker to the map, call setMap();
-      //   marker.setMap(map);
-      // }
       var places = <%= raw @places.as_json -%>;
 
-      var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 12,
-        // we need to update the center to the center point of the zip added
-        center: new google.maps.LatLng(places[0][1], places[0][2]),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      });
+      if(places > 0){
 
-      var marker, i;
-
-      for (i = 0; i < places.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(places[i][1], places[i][2]),
-          map: map,
-          title:places[i][0]
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+          zoom: 12,
+          // we need to update the center to the center point of the zip added
+          center: new google.maps.LatLng(places[0][1], places[0][2]),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-      }
+
+        var marker, i;
+
+        for (i = 0; i < places.length; i++) {
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(places[i][1], places[i][2]),
+            map: map,
+            title:places[i][0]
+          });
+        };
+
+      } else {
+
+        // var myLatlng1 = new google.maps.LatLng(53.65914, 0.072050);
+
+        var mapOptions = {
+            zoom: 12,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                map.setCenter(initialLocation);
+            });
+        }
+      };
     }
     </script>
 
