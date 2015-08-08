@@ -16,7 +16,6 @@ class LocationsController < ApplicationController
     params[:location].parse_time_select! :end_time
 
     @location = Location.new(location_params)
-    # WIP: geocode!(params[:display_address])
     if @location.save
       flash[:notice]="New location created."
       redirect_to location_path(@location)
