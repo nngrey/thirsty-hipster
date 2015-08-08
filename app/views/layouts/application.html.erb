@@ -7,92 +7,39 @@
   <%= csrf_meta_tags %>
 
 <!-- ***************GOOGLE API TEST************* -->
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-    </style>
-    <script type="text/javascript"
-      key=ENV['API_KEY']
-      src="https://maps.googleapis.com/maps/api/js?key&sensor=false">
-    </script>
-   <script type="text/javascript">
-    function initialize() {
 
-      var places = <%= raw @places.as_json -%>;
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+</style>
+<script type="text/javascript"
+  key=ENV['API_KEY']
+  src="https://maps.googleapis.com/maps/api/js?key&sensor=false">
+</script>
+ <script type="text/javascript">
 
-      if(places > 0){
+  function initialize() {
 
-        var map = new google.maps.Map(document.getElementById('map-canvas'), {
-          zoom: 12,
-          // we need to update the center to the center point of the zip added
-          center: new google.maps.LatLng(places[0][1], places[0][2]),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+    var pins = <%= raw @pins.as_json %>;
+      var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 12,
+        // we need to update the center to the center point of the zip added
+        center: new google.maps.LatLng(pins[0][1], pins[0][2]),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+      var marker, i;
+
+      for (i = 0; i < pins.length; i++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(pins[i][1], pins[i][2]),
+          map: map,
+          title:pins[i][0]
         });
-
-        var marker, i;
-
-        for (i = 0; i < places.length; i++) {
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(places[i][1], places[i][2]),
-            map: map,
-            title:places[i][0]
-          });
-        };
-
-      } else {
-
-        // var myLatlng1 = new google.maps.LatLng(53.65914, 0.072050);
-
-        var mapOptions = {
-            zoom: 12,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
-
-        if (navigator.geolocation) {
-          var initialLocation;
-          navigator.geolocation.getCurrentPosition(function (position) {
-              var geocoder = new google.maps.Geocoder();
-              initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-              geocoder.geocode({'location': initialLocation}, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                  var result = results[0];
-                  zip = result.address_components[7]['short_name'];
-                  jQuery.ajax({
-                    type: 'GET',
-                    url: "/locations",
-                    dataType: 'json',
-                    data: {"zip" : zip}
-                  });
-                  var places = <%= raw @places.as_json -%>;
-                  var Latlng;
-                  if(places.length > 0){
-                    console.log('hi');
-                    Latlng = new google.maps.LatLng(places[0][1], places[0][2])
-                  };
-                  if(Latlng){
-                    map.setCenter(Latlng);
-                  };
-
-                  var marker, i;
-
-                  for (i = 0; i < places.length; i++) {
-                    marker = new google.maps.Marker({
-                      position: new google.maps.LatLng(places[i][1], places[i][2]),
-                      map: map,
-                      title:places[i][0]
-                    });
-                  };
-                }
-              });
-          });
-
-        }
       };
     }
-    </script>
+
+  </script>
 
 <!-- ****************************************** -->
 
