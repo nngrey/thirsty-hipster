@@ -2,9 +2,12 @@ class LocationsController < ApplicationController
   # respond_to :js, :json, :html
 
   def index
+    # @ip = request.ip
+    @ip = '97201'
+    @zip = params[:zip] ? params[:zip] : @ip
     @locations = Location.all
-    @results = @locations.where(:zip => params[:zip])
-    @places = @results.map{|r| [r.name, r['latitude'], r['longitude']]}
+    @results = @locations.where(:zip => @zip)
+    @pins = @results.map{|r| [r.name, r['latitude'], r['longitude']]}
   end
 
   def new
