@@ -3,17 +3,17 @@
 <%= form_for @location do |f| %>
 
   <div class="form_group">
-    <%=f.label :name, "Name" %> <br>
-    <%=f.text_field :name, :value => params[:name] || params[:location][:name]%>
+    <%=f.label :name, "Name*" %> <br>
+    <%=f.text_field :name, :value => params[:name] || params[:location][:name], :required => true%>
   </div><br>
 
   <div class="form_group">
-    <%=f.label :description, "What are the Happy Hour specials?" %> <br>
-    <%=f.text_area :description, :rows=>5, :cols=>40%>
+    <%=f.label :description, "What are the Happy Hour specials?*" %> <br>
+    <%=f.text_area :description, :rows=>5, :cols=>40, :required => true%>
   </div> <br>
 
   <div class="form_group">
-    <h5><strong>Which days have a Happy Hour?</strong></h5>
+    <h5><strong>Which days have a Happy Hour?*</strong></h5>
     <%= f.check_box :sunday %>
     <%=f.label :sunday, "Sunday" %>
     <%= f.check_box :monday %>
@@ -31,7 +31,7 @@
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :start_time, "Happy Hour Starting Time" %> <br>
+    <%=f.label :start_time, "Happy Hour Starting Time*" %> <br>
     <%= f.time_select :start_time,
       :labels => false,
       :combined => true,
@@ -42,12 +42,13 @@
       :start_minute => 00,
       :end_hour => 23,
       :end_minute => 00,
-      :ampm => true
+      :ampm => true,
+      :required => true
     %>
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :end_time, "Happy Hour Ending Time" %> <br>
+    <%=f.label :end_time, "Happy Hour Ending Time*" %> <br>
     <%= f.time_select :end_time,
       :labels => false,
       :combined => true,
@@ -58,28 +59,29 @@
       :start_minute => 00,
       :end_hour => 23,
       :end_minute => 00,
-      :ampm => true
+      :ampm => true,
+      :required => true
     %>
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :address, " Address" %> <br>
-    <%=f.text_field :address, :value => params[:address] || params[:location][:address] %>
+    <%=f.label :address, "Address*" %> <br>
+    <%=f.text_field :address, :value => params[:address] || params[:location][:address], :required => true %>
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :city, "City" %> <br>
-    <%=f.text_field :city, :value => params[:city] || params[:location][:city] %>
+    <%=f.label :city, "City*" %> <br>
+    <%=f.text_field :city, :value => params[:city] || params[:location][:city], :required => true %>
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :state, "State" %> <br>
-    <%=f.text_field :state, :value => params[:state] || params[:location][:state] %>
+    <%=f.label :state, "State*" %> <br>
+    <%=f.text_field :state, :value => params[:state] || params[:location][:state], :required => true %>
   </div> <br>
 
   <div class="form_group">
-    <%=f.label :zip, "Zipcode" %> <br>
-    <%=f.text_field :zip, :value => params[:zip] || params[:location][:zip] %>
+    <%=f.label :zip, "Zipcode*" %> <br>
+    <%=f.text_field :zip, :value => params[:zip] || params[:location][:zip], :required => true %>
   </div> <br>
 
   <%= f.text_field :display_address, :type => :hidden, :value => params[:display_address] || params[:location][:display_address] %>
