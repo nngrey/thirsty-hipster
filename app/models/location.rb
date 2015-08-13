@@ -5,6 +5,7 @@ class Location < ActiveRecord::Base
   after_validation :geocode
 
   validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
+  validates :name, :uniqueness => {:scope => :city}
 
   has_many :comments
   has_many :users, through: :comments
