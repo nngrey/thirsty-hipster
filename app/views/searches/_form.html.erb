@@ -1,11 +1,11 @@
 <%= form_tag searches_path do %>
   <div class="form_group">
-    <%= label_tag :name %><br>
-    <%= text_field_tag :name %>
+    <%= label_tag :name, "Name*" %><br>
+    <%= text_field_tag :name, nil, :required => true %>
   </div><br>
   <div class="form_group">
-    <%= label_tag(:city, "City") %><br>
-    <%= text_field_tag(:city, "Portland" ) %>
+    <%= label_tag(:city, "City or Zip*") %><br>
+    <%= text_field_tag(:city, "Portland", :required => true ) %>
   </div><br>
   <%= submit_tag "Search", :class => "btn btn-primary" %>
 <% end %>
