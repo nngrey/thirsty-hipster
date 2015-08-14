@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.4'
+ruby '2.1.1'
+
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -36,14 +38,13 @@ group :test, :development do
   gem 'pry'
 end
 
-group :test do
-  gem 'shoulda-matchers'
-  gem 'vcr'
-  gem 'webmock'
-end
+# group :test do
+#   gem 'shoulda-matchers'
+#   gem 'vcr'
+#   gem 'webmock'
+# end
 
-group :production do
-  gem 'rails_12factor'
-end
+# group :production do
+#   gem 'rails_12factor'
+# end
 
-ruby '2.1.1'
