@@ -1,5 +1,7 @@
+require "spec_helper"
+
 def sign_in(user)
-  visit root_url
+  visit "/"
   click_link "Sign in"
   fill_in :user_email, with: user.email
   fill_in :user_password, with: user.password
