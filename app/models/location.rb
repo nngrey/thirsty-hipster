@@ -5,6 +5,7 @@ class Location < ActiveRecord::Base
   after_validation :geocode
 
   validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
+  validate :days_were_selected
 
   has_many :comments
   has_many :users, through: :comments
@@ -43,5 +44,18 @@ class Location < ActiveRecord::Base
 			end
   	end
   	sequence.join(", ")
+  end
+
+  private
+
+  def days_were_selected
+    days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+    checked = false
+    days.each do |day|
+      checked = true if self[day].present?
+    end
+    if checked == false
+      self.errors.add(:days, "- You must select at least one day.")
+    end
   end
 end
