@@ -16,7 +16,7 @@ gem 'devise'
 gem 'textacular'
 gem 'rest-client'
 gem 'oauth'
-gem 'geocoder'
+gem 'geocoder', '~> 1.2.9'
 gem "combined_time_select", "~> 1.0.1"
 
 group :development do
@@ -38,13 +38,13 @@ group :test, :development do
   gem 'pry'
 end
 
-# group :test do
-#   gem 'shoulda-matchers'
-#   gem 'vcr'
-#   gem 'webmock'
-# end
+group :test do
+  gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
+end
 
-# group :production do
-#   gem 'rails_12factor'
-# end
+group :production do
+  gem 'rails_12factor'
+end
 

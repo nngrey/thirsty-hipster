@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Location do
-  before(:all) do 
+  before do 
     Geocoder.configure(:lookup => :test)
     Geocoder::Lookup::Test.add_stub(
       "New York, NY", [
@@ -17,7 +17,7 @@ describe Location do
       ]
     )
   end
-  
+
   it { should validate_presence_of :name }
   it { should validate_presence_of :address }
   it { should validate_presence_of :city }

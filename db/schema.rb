@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20140908031012) do
   enable_extension "plpgsql"
   enable_extension "tablefunc"
 
-  create_table "comments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "location_id"
     t.text    "comment"
     t.integer "rating"
   end
 
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.string   "city"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140908031012) do
     t.float    "longitude"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
