@@ -4,35 +4,44 @@ describe Location do
   let!(:user){ FactoryGirl.create(:user) }
   let!(:location){ FactoryGirl.build(:location) }
 
-  before do 
+  before(:all) do 
     Geocoder.configure(:lookup => :test)
-    Geocoder::Lookup::Test.add_stub(
-      "New York, NY", [
+    Geocoder::Lookup::Test.set_default_stub(
+      [
         {
           'latitude'     => 40.7143528,
           'longitude'    => -74.0059731,
           'address'      => 'New York, NY, USA',
           'state'        => 'New York',
           'state_code'   => 'NY',
-          'country'      => 'United States',
-          'country_code' => 'US'
+          'country'      => 'United States'
         }
       ]
     )
   end
   
-  context 'creating' do
-    it 'allows a signed in user to add a new comment' do
+  context 'create location path' do
+    it 'allows a signed in user to add a new location' do
+      params = {
+      :address => "3939 N Mississippi",
+      :city => "Portland",
+      :display_address => "3939 N Mississippi Boise Portland, OR 97227",
+      :name => "Bar Bar",
+      :phone => "503-288-3895",
+      :state => "OR",
+      :zip => "97227",
+      :controller => "locations",
+      :action => "new"
+      }
       sign_in(user)
-      visit new_location_path
-      create_location(location)
+      create_location(location, params)
       page.should have_content "New location created"
     end
   end
 
   context 'editing' do
     before(:each){ location.save }
-    
+
     it 'allows anyone to view the details of a location' do
       visit location_path(location)
       page.should have_content location.address
