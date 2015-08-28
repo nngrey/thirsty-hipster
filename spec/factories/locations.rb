@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :location do
-  	name Faker::Lorem.name
+  	name {Faker::Company.name}
     description Faker::Lorem.sentence
     address Faker::Address.street_address
     city Faker::Address.city
