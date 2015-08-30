@@ -26,4 +26,13 @@ describe Location do
   it { should have_many :comments }
   it { should have_many :users }
   it { should validate_uniqueness_of(:name).scoped_to(:city) }
+
+  let!(:location){ FactoryGirl.create(:location, monday: true) }
+
+  describe 'street address' do
+    it 'converts separate address fields into a single address string' do
+      expect(location.street_address).to eq("#{location.address}, #{location.city}, #{location.state}, US")
+    end
+  end
+
 end

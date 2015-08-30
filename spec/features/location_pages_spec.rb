@@ -4,7 +4,12 @@ describe Location do
 
   let!(:user){ FactoryGirl.create(:user) }
   let!(:location){ FactoryGirl.build(:location) }
-
+  let!(:location1) { FactoryGirl.create( 
+    :location, latitude: 45.509867, longitude: -122.6812479, wednesday: true,
+    display_address: "123 Main St, Portland, OR 97201", zip: "97201" ) }
+  let!(:location2) { FactoryGirl.create( 
+    :location, latitude: 45.509868, longitude: -122.6812478, thursday: true,
+    display_address: "321 Elm St, Portland, OR 97205", zip: "97205" ) }
   before(:all) do 
     Geocoder.configure(:lookup => :test)
     Geocoder::Lookup::Test.set_default_stub(
@@ -36,11 +41,9 @@ describe Location do
       }
       sign_in(user)
       create_location(location, params)
+    end
+  end
 
-  let!(:location1) { FactoryGirl.create( :location, latitude: 45.509867, longitude: -122.6812479, wednesday: true,
-                                         display_address: "123 Main St, Portland, OR 97201", zip: "97201" ) }
-  let!(:location2) { FactoryGirl.create( :location, latitude: 45.509868, longitude: -122.6812478, thursday: true,
-                                         display_address: "321 Elm St, Portland, OR 97205", zip: "97205" ) }
 
   context 'index' do
     it 'defaults to zipcode 97201 and displays any relevant locations' do

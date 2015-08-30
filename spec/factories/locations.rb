@@ -9,5 +9,7 @@ FactoryGirl.define do
     state 'New York'
     latitude 40.7143528
     longitude -74.0059731
+    start_time Time.zone.now
+    end_time Time.zone.now + 3.hours
   end
 end
