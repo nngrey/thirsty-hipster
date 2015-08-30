@@ -69,8 +69,7 @@ describe Location do
 
   context 'creating' do
     it 'allows a signed in user to create a new location' do
-      pending #You cannot visit this page without passing params for the values
-      user = FactoryGirl.create(:user)
+      #You cannot visit this page without passing params for the values
       sign_in(user)
       visit new_location_path
       location = FactoryGirl.build(:location, wednesday: true)
