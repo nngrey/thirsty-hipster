@@ -2,10 +2,31 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'shoulda-matchers'
+require 'rspec/autorun'
 require 'capybara/rails'
+require 'capybara-webkit'
 require 'capybara/poltergeist'
 require 'database_cleaner'
+require 'rack/utils'
+require 'shoulda-matchers'
+require 'phantomjs'
+
+# Capybara.register_driver :poltergeist do |app|
+#   Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil)
+# end
+# Capybara.javascript_driver = :poltergeist
+# Capybara.register_driver :poltergeist_debug do |app|
+#   Capybara::Poltergeist::Driver.new(app, :inspector => true)
+# end
+# Capybara.javascript_driver = :poltergeist_debug
+
+Capybara.javascript_driver = :webkit
+Capybara.javascript_driver = :webkit_debug
+
+Capybara.app = Rack::ShowExceptions.new(ThirstyHipster::Application)
+
+
+WebMock.disable!
 
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -53,4 +74,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include FactoryGirl::Syntax::Methods
+
 end

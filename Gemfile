@@ -31,7 +31,6 @@ group :test, :development do
   gem 'capybara'
   gem 'launchy'
   gem 'faker'
-  gem 'poltergeist'
   gem 'letter_opener'
   gem 'dotenv-rails'
   gem 'database_cleaner'
@@ -39,9 +38,12 @@ group :test, :development do
 end
 
 group :test do
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock'
+  gem 'capybara-webkit'
 end
 
 group :production do
