@@ -3,9 +3,15 @@ class LocationsController < ApplicationController
   def index
     # @ip = request.ip
     @ip = '97201'
-    @zip = params[:zip] ? params[:zip] : @ip
+    zip = params[:zip] ? params[:zip] : @ip
+    if params[:date]
+      time = params[:date]
+      time = Time.new(time["year"], time["month"], time["day"], time["hour"], time["minute"])
+    else
+      time = Time.now
+    end
     @locations = Location.all
-    @results = @locations.where(:zip => @zip)
+    @results = Location.where(["zip = :zip and start_time >= :time", { zip: zip, time: time }])
     @pins = @results.map{|r| [r.name, r['latitude'], r['longitude']]}
   end
 
@@ -14,7 +20,6 @@ class LocationsController < ApplicationController
   end
 
   def create
-
     params[:location].parse_time_select! :start_time
     params[:location].parse_time_select! :end_time
 
