@@ -8,6 +8,7 @@ require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'rack/utils'
 require 'phantomjs'
+require Rails.root.join("spec/support/geocoder_stubs")
 
 # Capybara.register_driver :poltergeist do |app|
 #   Capybara::Poltergeist::Driver.new(app, :window_size => [1920, 1080], :phantomjs_logger => nil)
