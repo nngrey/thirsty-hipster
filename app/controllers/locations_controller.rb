@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
     # @ip = request.ip
     @ip = '97201'
     zip = params[:zip] ? params[:zip] : @ip
+    @zip = zip
     if params[:date]
       time = params[:date]
       time = Time.new(time["year"], time["month"], time["day"], time["hour"], time["minute"])
