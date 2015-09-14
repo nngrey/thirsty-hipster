@@ -70,11 +70,22 @@ describe Location do
   context 'creating' do
     it 'allows a signed in user to create a new location' do
       #You cannot visit this page without passing params for the values
+      params = {
+      :address => "3939 N Mississippi",
+      :city => "Portland",
+      :display_address => "3939 N Mississippi Boise Portland, OR 97227",
+      :name => "Bar Bar",
+      :phone => "503-288-3895",
+      :state => "OR",
+      :zip => "97227",
+      :controller => "locations",
+      :action => "new"
+      }
       sign_in(user)
-      visit new_location_path
-      location = FactoryGirl.build(:location, wednesday: true)
-      create_location(location)
-      page.should have_content "New location created"
+      location = FactoryGirl.build(:location)
+      create_location(location, params)
+      save_and_open_page
+      expect(page).to have_content "New location created"
     end
   end
 

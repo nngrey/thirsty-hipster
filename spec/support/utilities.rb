@@ -15,7 +15,6 @@ def create_location(location, params)
   fill_in :location_address, with: location.address
   fill_in :location_city, with: location.city
   fill_in :location_state, with: location.state
-  # fill_in :location_start_time, with: location.start_time
-  # fill_in :location_end_time, with: location.end_time
+  check   :location_wednesday
   click_button "Create Location"
 end
