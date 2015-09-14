@@ -2,7 +2,7 @@ class Location < ActiveRecord::Base
   attr_reader :display_address, :latitude, :longitude
 
   geocoded_by :street_address
-  after_validation :geocode
+  before_create :geocode
 
   validates_presence_of :name, :address, :city, :state, :start_time, :end_time, :description
   validates :name, :uniqueness => {:scope => :city}

@@ -2,11 +2,12 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+require 'capybara/rails'
 require 'capybara-webkit'
 require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'rack/utils'
+require 'shoulda-matchers'
 require 'phantomjs'
 
 # Capybara.register_driver :poltergeist do |app|
@@ -26,16 +27,25 @@ Capybara.app = Rack::ShowExceptions.new(ThirstyHipster::Application)
 
 WebMock.disable!
 
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.include Capybara::DSL # fixes undefined method 'visit'
+  config.include Rails.application.routes.url_helpers # fixes undefined paths
+
+  # Clean the db
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
 
   # ## Mock Framework
   #
@@ -63,6 +73,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
   config.include FactoryGirl::Syntax::Methods
 
 end
