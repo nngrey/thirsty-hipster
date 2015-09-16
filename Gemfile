@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.4'
+ruby '2.1.1'
+
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails'
 gem 'uglifier'
@@ -14,7 +16,7 @@ gem 'devise'
 gem 'textacular'
 gem 'rest-client'
 gem 'oauth'
-gem 'geocoder'
+gem 'geocoder', '~> 1.2.9'
 gem "combined_time_select", "~> 1.0.1"
 
 group :development do
@@ -48,4 +50,3 @@ group :production do
   gem 'rails_12factor'
 end
 
-ruby '2.1.1'

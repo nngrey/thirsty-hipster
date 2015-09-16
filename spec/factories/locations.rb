@@ -2,12 +2,14 @@
 
 FactoryGirl.define do
   factory :location do
-  	name {Faker::Company.name}
+    name {Faker::Company.name}
     description Faker::Lorem.sentence
-    address Faker::Address.street_address
-    city Faker::Address.city
-    state Faker::Address.state
-    start_time "17:00:00"
-    end_time "19:00:00"
+    address 'New York, NY, USA'
+    city 'New York'
+    state 'New York'
+    latitude 40.7143528
+    longitude -74.0059731
+    start_time Time.zone.now
+    end_time Time.zone.now + 3.hours
   end
 end
