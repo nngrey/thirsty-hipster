@@ -4,7 +4,7 @@
 <p>State: <strong><%= @location.state %></strong></p>
 <p>Zip: <strong><%= @location.zip %></strong></p>
 <p>Phone: <strong><%= @location.phone %></strong></p>
-<p>Lat: <strong><%= @location.latitude %></strong></p>
+<p>LatLong: <%= "#{@location['latitude']} #{@location['longitude']}"%></p>
 
 <p>Days: <%= @sequence %>
 <p>Happy Hour: <strong><%= @location.start_time.to_s(:quick) %></strong> to <strong><%= @location.end_time.to_s(:quick) %></strong></p>

@@ -5,9 +5,15 @@
 			<h5><em>Thirsty Hipster helps you find the best local happy hours based on users recommendation. Search current listings or add and review new ones.</em></h5>
 			<%= form_tag("/locations", method: "get") do %>
 			  <div class="form_group">
-			    <%= label_tag :zip, "Zipcode: " %><br>
-			    <%= text_field_tag :zip %>
-			  </div><br>
+			    <%= label_tag :zip, "Near Zipcode: " %><br>
+			    <%= text_field_tag :zip, @zip %>
+			  </div>
+			  <span style="font-size: 85%">Seeded zips: 97201, 97204, 97205, 97209, 97211, 97212, 97214, 97227, 97232</span>
+			  <br><br>
+			  <div class="form_group">
+			    <%= label_tag :start_time, "Starting Around" %> <br>
+			    <%= select_time(Time.now + 30.minutes, :minute_step => 30, :ampm => true, start_hour: 12, end_hour: 23) %>
+			  </div> <br>
 			  <%= submit_tag "Search", :class => "btn btn-primary" %>
 			<% end %> <br>
 		<div id="map-canvas"></div>

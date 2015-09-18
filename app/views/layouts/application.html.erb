@@ -19,7 +19,6 @@
 <script type="text/javascript">
 
   function initialize() {
-
     var pins = <%= raw @pins.as_json %>;
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
       zoom: 12,

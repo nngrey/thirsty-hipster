@@ -4,7 +4,7 @@
 
   <div class="form_group">
     <%=f.label :name, "Name*" %> <br>
-    <%=f.text_field :name, :value => params[:name] || params[:location][:name], :required => true%>
+    <%=f.text_field :name, :value => params[:name], :required => true%>
   </div><br>
 
   <div class="form_group">
@@ -66,29 +66,29 @@
 
   <div class="form_group">
     <%=f.label :address, "Address*" %> <br>
-    <%=f.text_field :address, :value => params[:address] || params[:location][:address], :required => true %>
+    <%=f.text_field :address, :value => params[:address], :required => true %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :city, "City*" %> <br>
-    <%=f.text_field :city, :value => params[:city] || params[:location][:city], :required => true %>
+    <%=f.text_field :city, :value => params[:city], :required => true %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :state, "State*" %> <br>
-    <%=f.text_field :state, :value => params[:state] || params[:location][:state], :required => true %>
+    <%=f.text_field :state, :value => params[:state], :required => true %>
   </div> <br>
 
   <div class="form_group">
     <%=f.label :zip, "Zipcode*" %> <br>
-    <%=f.text_field :zip, :value => params[:zip] || params[:location][:zip], :required => true %>
+    <%=f.text_field :zip, :value => params[:zip], :required => true %>
   </div> <br>
 
-  <%= f.text_field :display_address, :type => :hidden, :value => params[:display_address] || params[:location][:display_address] %>
+  <%= f.text_field :display_address, :type => :hidden, :value => params[:display_address] %>
 
   <div class="form_group">
     <%=f.label :phone, "Phone" %> <br>
-    <%=f.text_field :phone, :value => params[:phone] || params[:location][:phone] %>
+    <%=f.text_field :phone, :value => params[:phone] %>
   </div> <br>
 
   <%= f.submit(:class => "btn btn-primary") %>
