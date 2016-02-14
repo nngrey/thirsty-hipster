@@ -3,6 +3,9 @@
 <head>
   <title><%= yield(:title) %>| The Thirsty Hipster </title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?ENV['API_KEY']">
+  </script>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
@@ -12,33 +15,8 @@
   html { height: 100% }
   body { height: 100%; margin: 0; padding: 0 }
 </style>
-<script type="text/javascript"
-  key=ENV['API_KEY']
-  src="https://maps.googleapis.com/maps/api/js?key&sensor=false">
-</script>
-<script type="text/javascript">
 
-  function initialize() {
-    var pins = <%= raw @pins.as_json %>;
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-      zoom: 12,
-      // we need to update the center to the center point of the zip added
-      center: new google.maps.LatLng(pins[0][1], pins[0][2]),
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
 
-    var marker, i;
-
-    for (i = 0; i < pins.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(pins[i][1], pins[i][2]),
-        map: map,
-        title:pins[i][0]
-      });
-    };
-  }
-
-</script>
 
 <!-- ****************************************** -->
 
