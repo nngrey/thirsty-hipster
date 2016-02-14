@@ -1,9 +1,9 @@
 require 'faker'
 
 def seed_locations
-  100.times do |t|
-    location = Location.create!(
-      name: Faker::Company.name,
+  15.times do
+    location = Location.create(
+      name: Faker::Company.name + (10 * rand().round).to_s,
       address: Faker::Address.street_name,
       city: "Portland",
       state: "OR",
@@ -12,7 +12,7 @@ def seed_locations
       description: Faker::Lorem.sentence,
       url: Faker::Internet.url,
       rating: "rating",
-      zip: ["97204", "97205", "97209", "97227", "97212", "97232", "97214", "97201", "97211"].sample,
+      zip: ["97201", "97202"].sample,
       sunday: true,
       monday: true,
       tuesday: true,
@@ -22,13 +22,10 @@ def seed_locations
       saturday: true,
       phone: Faker::PhoneNumber.phone_number,
     )
-  update_latlong(location)
+      location['longitude'] = location['longitude'] + [(rand() * 0.005), (rand() * -0.005)].sample
+      location['latitude'] = location['latitude'] + [(rand() * 0.005), (rand() * -0.005)].sample
+      location.save
   end
-end
-
-def update_latlong(location)
-  # location['longitude'] = location['longitude'] + [0.0000012, 0.0000014, 0.0000016, -0.0000012, -0.0000014].sample
-  location['latitude'] = location['latitude'] + [0.0000002, 0.0000004, 0.0000006, -0.0000002, -0.0000004].sample
 end
 
 seed_locations
