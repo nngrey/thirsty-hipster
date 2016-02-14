@@ -7,12 +7,12 @@ class LocationsController < ApplicationController
     @zip = zip
     if params[:date]
       time = params[:date]
-      time = Time.new(time["year"], time["month"], time["day"], time["hour"], time["minute"])
+      time = Time.new("2000", "1", "1", time["hour"], time["minute"], 0, 0)
     else
       time = Time.now
     end
     @locations = Location.all
-    @results = Location.where(["zip = :zip and start_time >= :time", { zip: zip, time: time }])
+    @results = Location.where("zip = :zip and start_time >= :time", { zip: zip, time: time })
     @pins = @results.map{|r| [r.name, r['latitude'], r['longitude']]}
   end
 
