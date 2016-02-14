@@ -1,0 +1,36 @@
+.row{:onload => "initialize()"}
+  .col-md-6
+    %h2 Search for Local Happy Hours
+    %h5
+      %em Thirsty Hipster helps you find the best local happy hours based on users recommendation. Search current listings or add and review new ones.
+    = form_tag("/locations", method: "get") do
+      .form_group
+        = label_tag :zip, "Near Zipcode: "
+        %br
+          = text_field_tag :zip, @zip
+      %span{:style => "font-size: 85%"} Seeded zips: 97201, 97202
+      %br
+        %br
+          .form_group
+            = label_tag :start_time, "Starting Around"
+            %br
+              = select_time(Time.now + 30.minutes, :minute_step => 30, :ampm => true, start_hour: 12, end_hour: 23)
+          %br
+            = submit_tag "Search", :class => "btn btn-primary"
+    %br
+      #map-canvas
+  .col-md-4.col-md-offset-1
+    - if @results.length > 0
+      %h2 Happy Hours
+      - @results.each do |result|
+        %h3= link_to "#{result.name}", location_path(result)
+        %p
+          = result.city
+          , #{result.state} #{result.zip}
+    - elsif params[:zip]
+      %h2 Happy Hours
+      %h5#no-results
+        %em
+          Sorry, no happy hours have been added for this zip code. #{link_to "Click here", searches_path} to add a location.
+:javascript
+  var pins = #{@pins.to_json}
