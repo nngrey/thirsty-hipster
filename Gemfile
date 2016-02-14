@@ -18,6 +18,7 @@ gem 'rest-client'
 gem 'oauth'
 gem 'geocoder', '~> 1.2.9'
 gem "combined_time_select", "~> 1.0.1"
+gem 'haml'
 
 group :development do
   gem 'better_errors'
