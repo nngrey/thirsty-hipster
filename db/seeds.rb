@@ -22,8 +22,8 @@ def seed_locations
       saturday: true,
       phone: Faker::PhoneNumber.phone_number,
     )
-      location['longitude'] = location['longitude'] + [(rand() * 0.005), (rand() * -0.005)].sample
-      location['latitude'] = location['latitude'] + [(rand() * 0.005), (rand() * -0.005)].sample
+      location['longitude'] = location['longitude'] + [(rand() * 0.0005), (rand() * -0.005)].sample
+      location['latitude'] = location['latitude'] + [(rand() * 0.0005), (rand() * -0.005)].sample
       location.save
   end
 end
