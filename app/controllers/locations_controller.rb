@@ -11,9 +11,10 @@ class LocationsController < ApplicationController
     else
       time = Time.now
     end
-    @locations = Location.all
-    @results = Location.where(["zip = :zip and start_time >= :time", { zip: zip, time: time }])
-    @pins = @results.map{|r| [r.name, r['latitude'], r['longitude']]}
+
+    # @locations = Location.all
+    @location_results = Location.where(["zip = :zip and start_time >= :time", { zip: zip, time: time }])
+    @locations = @location_results.map { |r| r.attributes }
   end
 
   def new

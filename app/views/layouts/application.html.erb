@@ -19,23 +19,58 @@
 <script type="text/javascript">
 
   function initialize() {
-    var pins = <%= raw @pins.as_json %>;
-    // console.log(pins);
+
+    var locations = <%= raw @locations.to_json %>;
+    var infoWindowContent = [];
+    var startHour, startMin
+
+    for (var i = 0; i < locations.length; i++) {
+      startHour = locations[i].start_time.substr(11, 2);
+      startMin = locations[i].start_time.substr(14, 2);
+      startHour < 12 ? startHour = startHour : startHour = startHour - 12;
+
+      var startTime = startHour + ':' + startMin;
+
+      endHour = locations[i].end_time.substr(11, 2);
+      endMin = locations[i].end_time.substr(14, 2);
+      endHour < 12 ? endHour = endHour : endHour = endHour - 12;
+
+      var endTime = endHour + ':' + endMin;
+
+      var item =
+        [
+          '<div>' +
+            '<h3>' + locations[i].name + '</h3>' +
+              '<p>' + locations[i].address + ', ' + locations[i].city + ', ' + locations[i].state + ' ' + locations[0].zip + '</p>' +
+              '<p>' + 'Happy hour: ' + startTime + '-' + endTime + '</p>' +
+              '<p>' + locations[i].description + '</p>' +
+          '</div>'
+        ];
+      infoWindowContent.push(item);
+    };
+
     var map = new google.maps.Map(document.getElementById('map-canvas'), {
       zoom: 14,
       // we need to update the center to the center point of the zip added
-      center: new google.maps.LatLng(pins[0][1], pins[0][2]),
+      center: new google.maps.LatLng(locations[0].latitude, locations[0].longitude),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    var marker, i;
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
 
-    for (i = 0; i < pins.length; i++) {
+    for (i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
-        position: new google.maps.LatLng(pins[i][1], pins[i][2]),
+        position: new google.maps.LatLng(locations[i].latitude, locations[i].longitude),
         map: map,
-        title: pins[i][0]
+        title: locations[i].name
       });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+              infoWindow.setContent(infoWindowContent[i][0]);
+              infoWindow.open(map, marker);
+          }
+      })(marker, i));
     };
   }
 

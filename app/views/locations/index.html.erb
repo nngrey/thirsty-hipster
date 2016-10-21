@@ -20,15 +20,15 @@
 	</div>
 
   <div class="col-md-4 col-md-offset-1">
-  	<% if @results.length > 0 %>
+  	<% if @locations.length > 0 %>
 			<h2>Happy Hours</h2>
-				<% @results.each do |result| %>
-					<h3><%= link_to "#{result.name}", location_path(result) %></h3>
-					<p><%= result.city %>, <%= result.state %> <%= result.zip %></p>
+				<% @location_results.each do |location| %>
+					<h3><%= link_to "#{location.name}", location_path(location) %></h3>
+					<p><%= location.city %>, <%= location.state %> <%= location.zip %></p>
 				<% end %>
 		<% elsif params[:zip] %>
 			<h2>Happy Hours</h2>
-			<h5 id="no-results"><em>Sorry, no happy hours have been added for this zip code. <%= link_to "Click here", searches_path %> to add a location.<em></h5>
+			<h5 id="no-locations"><em>Sorry, no happy hours have been added for this zip code. <%= link_to "Click here", searches_path %> to add a location.<em></h5>
 		<% end %>
 	</div>
 </div>

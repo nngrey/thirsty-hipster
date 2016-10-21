@@ -13,7 +13,9 @@ class SearchesController < ApplicationController
     if params[:name] == "" || params[:city] == ""
       flash[:alert] = "Please enter a valid name and city or zip."
     end
-    @response = @search.yelp_check(params[:name], params[:city])
+    gateway = ::FetchLocations.new
+    response = gateway.process_request(params[:name], params[:city])
+    @response = gateway.process_response(response)
     render 'index'
   end
 
