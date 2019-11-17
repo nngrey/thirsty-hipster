@@ -1,7 +1,7 @@
 The Thirsty Hipster App
 ======================
 
-This was originally an Epicodus Exercise, but has gorwn into a side project. 
+This was originally an Epicodus Exercise, but has grown into a side project. 
 
 Summary
 --------
