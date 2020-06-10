@@ -16,7 +16,7 @@ gem 'devise'
 gem 'textacular'
 gem 'rest-client'
 gem 'oauth'
-gem 'geocoder', '~> 1.2.9'
+gem 'geocoder', '~> 1.6.1'
 gem "combined_time_select", "~> 1.0.1"
 
 group :development do
